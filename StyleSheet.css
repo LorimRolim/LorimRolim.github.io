@@ -1,5 +1,6 @@
 ﻿/* Minimal, elegant, left-column layout. No JS. */
 :root {
+    --fh: 37.06px;
     --bg: #ffffff;
     --fg: #111111;
     --muted: #666666;
@@ -12,54 +13,38 @@
     --radius: 16px;
 }
 
-/* Dark mode support if the user prefers it */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bg: #0b0b0b;
-        --fg: #eaeaea;
-        --muted: #a0a0a0;
-        --link: #a8c7ff;
-        --link-visited: #c5b3ff;
-        --rule: #242424;
-    }
-}
 
 * {
     box-sizing: border-box;
 }
 
-html, body {
-    height: 100%;
-}
 
 body {
+    height: 100%;
+    width: 100%;
     margin: 0;
     background: var(--bg);
     color: var(--fg);
     font: 16px/var(--lh) ui-sans-serif, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
     text-rendering: optimizeLegibility;
+    padding: calc(var(--pad));
 }
 
-/* Left-aligned single column */
-.site-header,
-.site-main,
-.site-footer {
-    max-width: var(--maxw);
-    padding: var(--pad);
+
+main {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: calc(100vh - var(--fh) - var(--pad));
+    width: 100%;
 }
 
-/* Keep everything left; generous whitespace to the right on wide screens */
-@media (min-width: 960px) {
-    .site-header,
-    .site-main,
-    .site-footer {
-        padding-left: calc(var(--pad) * 2);
-    }
-}
+
 
 .site-title {
     font-size: 24px;
-    margin: 24px 0 6px 0;
+/*    margin: 24px 0 6px 0;*/
     letter-spacing: 0.2px;
 }
 
@@ -117,6 +102,7 @@ body {
 
 /* Article page */
 article.post {
+    
     margin-top: 6px;
     border-top: 1px solid var(--rule);
     padding-top: 18px;
@@ -158,9 +144,9 @@ a {
 
 /* Footer */
 .site-footer {
+    height:var(--fh);
     color: var(--muted);
     font-size: 14px;
     border-top: 1px solid var(--rule);
-    margin-top: 40px;
-    padding-top: 18px;
+
 }
